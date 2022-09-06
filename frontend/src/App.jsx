@@ -13,7 +13,7 @@ function App() {
     
     async function getContacts() {
         const res = await fetch("http://localhost:4000/api/contacts/")
-        const data = await res.text()
+        const data = await res.json()
         console.log(data);
         SetData(data);
     }

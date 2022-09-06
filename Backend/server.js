@@ -3,11 +3,13 @@ const express =require('express');
 const { default: mongoose } = require('mongoose');
 const moongoose = require('./routes/contacts')
 const contactsRoutes = require('./routes/contacts')
-
+const cors = require('cors')
 const app = express();
 
 app.use(express.json())
-
+app.use(cors({
+    origin:'http://localhost:5173',
+}))
 app.use((req,res,next)=>{
     console.log(req.path)
     next()
