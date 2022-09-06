@@ -5,8 +5,10 @@ export default function Navbar(){
     return(
       <div id="navdiv" >
       <nav>
-<h1>Contact App</h1>
+<h1>Contacts</h1>
+<button className="newcontact">+</button>
         </nav>
+
         <form>
 <input type="string" placeholder="Search For Contact"></input>
 </form>

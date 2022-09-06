@@ -14,22 +14,55 @@ h1{
   margin-top: 0px;
   background: grey;
   display: flex ;
+  justify-content: center;
   padding-right: 0%;
   justify-content: center;
-  gap: 5px;
   height:50px;
 }
 
 input{
   border-style: solid;
   border-width: thin;
-  height: 40px;
+  height: 50px;
   width: 500px;
   background-color: lightgrey;
+  text-align: center;
 }
 
 form{
   margin-top:auto;
   margin-bottom: auto;
+}
+
+
+.newcontact{  
+  text-align: right;
+  font-size: 2.5em;
+  color: blue;
+  background: transparent;
+  border-style: none;
+}
+
+
+#LIST{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow-y: visible;
+  
+}
+
+.contactbox{
+  background: lightgrey;
+  width: 500px;
+  height: 50px;
+  text-align: left;
+  color: white;
+ border-width: thin;
+ padding-left: 8px;
+ font-size: medium;
 }
 
