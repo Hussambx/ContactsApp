@@ -1,17 +1,17 @@
 import React from "react";
 
 
-export default function OneContact(){
+export default function OneContact(props){
     return(
         <div className="onecontact">
 
             <div className="menuoptions">
-                <button>Contacts</button> 
+                <button onClick={props.goback}>Contacts</button> 
                 <button>Edit</button> 
             </div>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"/>
-<h1>Hussam Baradei</h1>
+<h1>{props.firstname} {props.lastname}</h1>
 
             
         <div className="contactoptions">
@@ -39,7 +39,15 @@ export default function OneContact(){
 
         <div className="phonearea">
             <h4>phone</h4>
-            <h4>647-272-9073</h4>
+            <h4>{props.phonenumber}</h4>
+        </div>
+        <div className="phonearea">
+            <h4>email</h4>
+            <h4>sampleemail@yahoo.com</h4>
+        </div>
+        <div className="phonearea">
+            <h4>notes</h4>
+            <h4></h4>
         </div>
 
          <div className="fillerinfo">
