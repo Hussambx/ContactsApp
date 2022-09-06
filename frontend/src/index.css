@@ -172,3 +172,13 @@ hr{
   background:  rgb(46, 43, 43);
   width: 100%;
 }
+
+input{
+  text-align: left;
+  padding-left: 15px;
+}
+
+.a,.b{
+  margin-top: 25px;
+}
+
