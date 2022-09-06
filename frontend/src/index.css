@@ -66,3 +66,17 @@ form{
  font-size: medium;
 }
 
+.onecontact{
+  width: 500px;
+  background-color: lightgray;
+  border-width: thin;
+  border-style: solid;
+}
+
+.onecontact>h1{
+  margin-top: 10px;
+}
+img{
+  padding-top: 20px;
+  width: 100px;
+}

@@ -3,11 +3,11 @@ import { useState,useEffect} from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ContactList from './components/ContactList.jsx'
 import Navbar from './components/Navbar.jsx'
-
+import OneContact from './components/OneContact.jsx'
 function App() {
   const [apidata, SetData] = useState([])
   const[viewmore,SetView] = useState([]);//Use State Used For Fetching Single Contact 
-  
+  const[displayed,SetDisplay]=useState(false);
   
   React.useEffect(() => {
     
@@ -16,6 +16,7 @@ function App() {
         const data = await res.json()
         console.log(data);
         SetData(data);
+       
     }
     getContacts()
 }, [])
@@ -28,6 +29,8 @@ function App() {
       const data = await res.json()
       if(res.ok){
         SetView(data)
+        SetDisplay(false);
+        console.log(data);
       }else{
         console.log("Contact Doesn't Exist")
       }
@@ -53,13 +56,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar/>
+       {displayed && <Navbar/>}
       <Routes>
        
         <Route
         path='/'
         element={
-          <div id="LIST">{ContactsData}</div>
+          
+          <div id="LIST">
+            {displayed && ContactsData}
+            {!displayed && <OneContact/>}
+            </div>
           }>
 
 
