@@ -2,12 +2,23 @@ import React from "react";
 
 
 export default function OneContact(props){
+
+    //This function will trigger the editcontactf () in app.jx. it will then update the edit contact state. Which will basically pass the aleady excisting fetched data to the
+    //newcontact.jsx field instead of having to fetch the data again 
+    function existingvalues(){
+        props.gocreation([props.firstname,props.lastname,props.phonenumber]);
+    }
+
+
+
+
+
     return(
         <div className="onecontact">
 
             <div className="menuoptions">
                 <button onClick={props.goback}>Contacts</button> 
-                <button>Edit</button> 
+                <button onClick={existingvalues}>Edit</button> 
             </div>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"/>

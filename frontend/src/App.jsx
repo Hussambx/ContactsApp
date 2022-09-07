@@ -11,7 +11,8 @@ function App() {
   const[displayed,SetDisplay]=useState(true);
   const[newcontact,SetContact]=useState(true);
   const[refreshdata,SetRefresh] = useState(false); //Stated used to refresh data 
-  
+  const[editcontact,SetEdit] = useState([]);//This array will hold the contacts existing values and pass them in as props to the Newcontact.jsx screen 
+
   //Initally fetchs all the data 
   React.useEffect(() => {
     async function getContacts() {
@@ -48,11 +49,19 @@ function App() {
     SetContact(true)
   }
   //This function is triggered when the user hits on done on the new contact screen (NewContact.jsx), it returns them back to the main contact list page 
-  function creation(){
+  function creation(val){
     SetDisplay(true)
     SetContact(!newcontact)
   }
 
+  //This function is called within OneContact.jsx. It sets the edit contact state using the passed on value and pass's it as a prop to NewContact.jsx 
+  //This way the already fetched data is fetched twice
+  function editcontactf(val){
+    SetEdit(val);
+    SetDisplay(true)
+    SetContact(!newcontact)
+
+  }
 
     //Maps the apidata first fetched with application is opened and pass's it as a prop 
   const ContactsData=apidata.map(contact=>{
@@ -83,10 +92,13 @@ function App() {
             {displayed&& !newcontact && <NewContact
               goback={creation}
               cancelcreation={back}
+              firstname={editcontact[0]}
+              lastname={editcontact[2]}
+              phonenumber={editcontact[3]}
             />}
             {!displayed && <OneContact
             goback={back}
-            gocreation={creation}
+            gocreation={editcontactf}
             key={viewmore._id}
             id={viewmore._id}
             firstname={viewmore.firstname}
