@@ -21,6 +21,19 @@ const getContact = async(req,res)=>{
     res.status(200).json(contact)
 }
 
+//get contacts by name 
+const searchContacts=async(req,res)=>{
+    const{id} = req.params                                 //options ignores the captialzation 
+    const contacts = await Contact.find({firstname:{$regex:id,$options:'i'}});
+    if(!contacts){
+        console.log("DOESNT EXIST")
+    }
+    if(contacts){
+        res.status(200).json(contacts)
+    }
+   
+}
+
 
 //create new contact
 const createContact=async (req,res)=>{
@@ -74,5 +87,6 @@ module.exports ={
     getContacts,
     getContact,
     deleteContact,
-    updateContact
+    updateContact,
+    searchContacts
 }
