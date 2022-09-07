@@ -52,6 +52,7 @@ function App() {
   function creation(val){
     SetDisplay(true)
     SetContact(!newcontact)
+    SetRefresh(!refreshdata);
   }
 
   //This function is called within OneContact.jsx. It sets the edit contact state using the passed on value and pass's it as a prop to NewContact.jsx 
@@ -93,8 +94,9 @@ function App() {
               goback={creation}
               cancelcreation={back}
               firstname={editcontact[0]}
-              lastname={editcontact[2]}
-              phonenumber={editcontact[3]}
+              lastname={editcontact[1]}
+              phonenumber={editcontact[2]}
+              idofdata={editcontact[3]}
             />}
             {!displayed && <OneContact
             goback={back}

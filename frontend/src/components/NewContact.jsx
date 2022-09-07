@@ -4,9 +4,10 @@ import { useState } from "react";
 //This component will act as the create new contact/edit an existing contact screen  
 export default function NewContact(props){
     
-        const [firstname,SetFirstname] = useState();
-        const [lastname, SetLastname] = useState();
-        const [phonenumber,SetNumber]=useState();
+        const [firstname,SetFirstname] = useState(props.firstname);
+        const [lastname, SetLastname] = useState(props.lastname);
+        const [phonenumber,SetNumber]=useState(props.phonenumber);
+        const[idofdata,SetDataId]=useState(props.id)
         const[email,SetEmail] = useState(); //Will add email functionality at a later time 
 
         //This function submits the form data to the api, to store the new entry into the database once complete will then re-direct to main contacts list page with updated contact
@@ -25,6 +26,8 @@ export default function NewContact(props){
             }
             if(response.ok){
                 //Resets state values as data was sent to db
+                props.goback("");
+                console.log("MINT");
                 SetFirstname('');
                 SetLastname('');
                 SetNumber('');
@@ -37,7 +40,7 @@ export default function NewContact(props){
         
         <div className="menuoptions">
                 <button onClick={props.cancelcreation}>Cancel</button> 
-                <button onClick={submit && props.goback}>Done</button> 
+                <button onClick={submit}>Done</button> 
             </div>
          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"/>
             

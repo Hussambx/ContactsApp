@@ -6,7 +6,7 @@ export default function OneContact(props){
     //This function will trigger the editcontactf () in app.jx. it will then update the edit contact state. Which will basically pass the aleady excisting fetched data to the
     //newcontact.jsx field instead of having to fetch the data again 
     function existingvalues(){
-        props.gocreation([props.firstname,props.lastname,props.phonenumber]);
+        props.gocreation([props.firstname,props.lastname,props.phonenumber,props.id]);
     }
 
 
