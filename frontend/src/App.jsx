@@ -4,12 +4,13 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ContactList from './components/ContactList.jsx'
 import Navbar from './components/Navbar.jsx'
 import OneContact from './components/OneContact.jsx'
-
+import NewContact from './components/NewContact.jsx'
 function App() {
   const [apidata, SetData] = useState([]) //Data that is fetched with api is first called 
   const[viewmore,SetView] = useState([]);//Use State Used For Fetching Single Contact 
   const[displayed,SetDisplay]=useState(true);
-  const[refreshdata,SetRefresh] = useState(true); //Stated used to refresh data 
+  const[newcontact,SetContact]=useState(true);
+  const[refreshdata,SetRefresh] = useState(false); //Stated used to refresh data 
   
   //Initally fetchs all the data 
   React.useEffect(() => {
@@ -40,11 +41,18 @@ function App() {
   getContact()
   }
 
-  //Changes View
+  //This function is triggered when the user hits on Contact when on the (Onecontact.jsx) screen it returns them back to the main contact list page 
   function back(){
     SetDisplay(true);
     SetRefresh(!refreshdata);
+    SetContact(true)
   }
+  //This function is triggered when the user hits on done on the new contact screen (NewContact.jsx), it returns them back to the main contact list page 
+  function creation(){
+    SetDisplay(true)
+    SetContact(!newcontact)
+  }
+
 
     //Maps the apidata first fetched with application is opened and pass's it as a prop 
   const ContactsData=apidata.map(contact=>{
@@ -71,9 +79,14 @@ function App() {
         element={
           
           <div id="LIST">
-            {displayed && ContactsData}
+            {displayed && newcontact&&ContactsData}
+            {displayed&& !newcontact && <NewContact
+              goback={creation}
+              cancelcreation={back}
+            />}
             {!displayed && <OneContact
             goback={back}
+            gocreation={creation}
             key={viewmore._id}
             id={viewmore._id}
             firstname={viewmore.firstname}
