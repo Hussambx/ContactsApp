@@ -8,7 +8,10 @@ export default function ContactList(props){
     }
 
     return(
+        <div id="contactlistbg">
             <button className="contactbox"  onClick={send}>{props.firstname} {props.lastname}</button>
+
+        </div>
 
        
     )
