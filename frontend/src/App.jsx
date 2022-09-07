@@ -81,7 +81,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-       {displayed && <Navbar/>}
+       {displayed && newcontact&& <Navbar
+       makenew={editcontactf}
+       />}
       <Routes>
        
         <Route
