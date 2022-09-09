@@ -95,7 +95,6 @@ function App() {
 
     //Maps the apidata first fetched with application is opened and pass's it as a prop 
   const ContactsData=apidata.map(contact=>{
-    console.log('was fired')
     return(
 <ContactList
   key={contact._id}
@@ -103,6 +102,8 @@ function App() {
   firstname={contact.firstname}
   lastname={contact.lastname}
   phonenumber={contact.phonenumber}
+  email={contact.email}
+  notes={contact.notes}
       expandview ={viewcontact}
 />
     )
@@ -130,6 +131,8 @@ function App() {
               lastname={editcontact[1]}
               phonenumber={editcontact[2]}
               idofdata={editcontact[3]}
+              email={editcontact[4]}
+              notes={editcontact[5]}
             />}
             {!displayed && <OneContact
             goback={back}
@@ -139,6 +142,8 @@ function App() {
             firstname={viewmore.firstname}
             lastname={viewmore.lastname}
             phonenumber={viewmore.phonenumber}
+            email={viewmore.email}
+            notes={viewmore.notes}
             />}
             </div>
           }>

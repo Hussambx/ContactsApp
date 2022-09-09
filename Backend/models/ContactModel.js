@@ -11,6 +11,14 @@ lastname:{
     type:String,
     required:true
 },
+email:{
+    type:String,
+    required:true
+},
+notes:{
+    type:String,
+    requried:true
+},
 phonenumber:{
     type:Number,
     requried:true

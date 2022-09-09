@@ -9,7 +9,7 @@ export default function OneContact(props){
     //This function will trigger the editcontactf () in app.jx. it will then update the edit contact state. Which will basically pass the aleady excisting fetched data to the
     //newcontact.jsx field instead of having to fetch the data again 
     function existingvalues(){
-        props.gocreation([props.firstname,props.lastname,props.phonenumber,props.id]);
+        props.gocreation([props.firstname,props.lastname,props.phonenumber,props.id,props.email,props.notes]);
     }
 
     //This function is triggered once the user hits on yes to confirm the delete request 
@@ -71,11 +71,11 @@ export default function OneContact(props){
         </div>
         <div className="phonearea">
             <h4>email</h4>
-            <h4>sampleemail@yahoo.com</h4>
+            <h4>{props.email}</h4>
         </div>
         <div className="phonearea">
             <h4>notes</h4>
-            <h4></h4>
+            <h4>{props.notes}</h4>
         </div>
 
          <div className="fillerinfo">
