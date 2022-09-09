@@ -9,10 +9,16 @@ export default function NewContact(props){
         const [phonenumber,SetNumber]=useState(props.phonenumber);
         const[idofdata,SetDataId]=useState(props.idofdata)
         const[email,SetEmail] = useState(); //Will add email functionality at a later time 
+        const[errormsg,SetError]=useState();
 
         //The Main Function called on decides if it will then use the POST method (Create New Contact) or PATCH method (Update excisting contact) based on if idofdata is null 
         function mainsubmit(){
-            idofdata==null?submit():updatedata();
+            if(firstname&&lastname&&phonenumber!=""){
+                idofdata==null?submit():updatedata();
+            }else{
+                SetError("Please Fill All Required Elements")
+            }
+           
         }
         
         //This function will use the PATCH method to update the already existing data with the newly created changes 
@@ -27,7 +33,7 @@ export default function NewContact(props){
             })
             const json = await response.json()
             if(!response.ok){
-                console.log("Error happened bro")
+                SetError("An Error Occured Please Try Again Later")
             }
             if(response.ok){
                 //Resets state values as data was sent to db
@@ -51,7 +57,7 @@ export default function NewContact(props){
             })
             const json = await response.json()
             if(!response.ok){
-                console.log("Error happened bro")
+                SetError("An Error Occured Please Try Again Later")
             }
             if(response.ok){
                 //Resets state values as data was sent to db
@@ -75,10 +81,10 @@ export default function NewContact(props){
             
             <input placeholder="First Name" required className="b" value={firstname} onChange={(e)=>SetFirstname(e.target.value)}></input>
             <input placeholder="Last Name" required  value={lastname} onChange={(e)=>SetLastname(e.target.value)}></input>
-            <input placeholder="Phone Number (Numbers Only)" required  className="a" value={phonenumber} onChange={(e)=>SetNumber(e.target.value)}></input>
+            <input placeholder="  Phone Number" required  className="a" value={phonenumber} onChange={(e)=>SetNumber(e.target.value)} type="number"></input>
             <input placeholder="Email" required  value={email}></input>
             <input placeholder="Notes" required  className="a"></input>
-            <h1>NOTE: </h1>
+            <h2>{errormsg} </h2>
         </>
 
 

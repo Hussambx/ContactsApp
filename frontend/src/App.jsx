@@ -47,7 +47,23 @@ function App() {
       const res = await fetch("http://localhost:4000/api/contacts/search/"+val)
       const data = await res.json()
       if(res.ok){
-        SetData(data);
+      //Checks If Data Is Empty Response meaning that nothing matching the search criteria was found
+        if(data==''){
+          //If thats the case it sets the data to be firstname of no contacts found and an invalid id
+          SetData(
+          [
+            {
+                "_id": "1",
+                "firstname": "No Contacts Found",
+                "lastname": "",
+                "phonenumber": 6,
+            }
+        ]);
+        }else{
+          //If the data is indeed no empty then it will take that data and set it up properly 
+          SetData(data);
+        }
+        
     }
   } 
   val==""?SetRefresh(!refreshdata):SearchContacts()
