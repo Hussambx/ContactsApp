@@ -7,9 +7,7 @@ const cors = require('cors')
 const app = express();
 
 app.use(express.json())
-app.use(cors({
-    origin:'http://localhost:5173',
-}))
+app.use(cors({}))
 app.use((req,res,next)=>{
     console.log(req.path)
     next()
@@ -22,7 +20,7 @@ app.use('/api/contacts',contactsRoutes)
 mongoose.connect(process.env.MONGO_URl)
 .then(()=>{
     app.listen(process.env.PORT, ()=> {
-        console.log("test")
+        console.log("active")
         })
 })
 .catch((error)=>{

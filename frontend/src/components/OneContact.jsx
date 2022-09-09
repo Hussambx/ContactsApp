@@ -14,7 +14,7 @@ export default function OneContact(props){
 
     //This function is triggered once the user hits on yes to confirm the delete request 
     async function removecontact(){
-        const response = await fetch('http://localhost:4000/api/contacts/'+props.id, {
+        const response = await fetch('https://contacts-tracker.herokuapp.com/api/contacts/'+props.id, {
             method: 'DELETE',
           })
           const json = await response.json()

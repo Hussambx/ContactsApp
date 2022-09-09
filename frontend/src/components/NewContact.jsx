@@ -25,7 +25,7 @@ export default function NewContact(props){
         //This function will use the PATCH method to update the already existing data with the newly created changes 
         async function updatedata(){
             const contactinfo = {firstname, lastname,email,notes,phonenumber}
-            const response = await fetch('http://localhost:4000/api/contacts/'+idofdata, {
+            const response = await fetch('https://contacts-tracker.herokuapp.com/api/contacts/'+idofdata, {
               method: 'PATCH',
               body: JSON.stringify(contactinfo),
               headers: {
@@ -51,7 +51,7 @@ export default function NewContact(props){
         //This function submits the form data to the api using the POST Method, to store the new entry into the database once complete will then re-direct to main contacts list page with updated contact
         async function submit(){
             const contactinfo = {firstname, lastname,email,notes,phonenumber}
-            const response = await fetch('http://localhost:4000/api/contacts/', {
+            const response = await fetch('https://contacts-tracker.herokuapp.com/api/contacts/', {
               method: 'POST',
               body: JSON.stringify(contactinfo),
               headers: {

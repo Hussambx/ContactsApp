@@ -26,7 +26,7 @@ const searchContacts=async(req,res)=>{
     const{id} = req.params                                 //options ignores the captialzation 
     const contacts = await Contact.find({firstname:{$regex:id,$options:'i'}});
     if(!contacts){
-        console.log("DOESNT EXIST")
+        return res.status(404).json({error: 'No such contact'})
     }
     if(contacts){
         res.status(200).json(contacts)

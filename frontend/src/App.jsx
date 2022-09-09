@@ -14,8 +14,8 @@ function App() {
   const[editcontact,SetEdit] = useState([]);//This array will hold the contacts existing values and pass them in as props to the Newcontact.jsx screen 
   //Initally fetchs all the data 
   React.useEffect(() => {
-    async function getContacts() {
-        const res = await fetch("http://localhost:4000/api/contacts/")
+    async function getContacts() {  //FOR SHOWCASEING PURPOSES THE URL WILL REMAIN EXPOSED RATHER THEN IT BEING HELD WITHIN AN ENV FILE 
+        const res = await fetch("https://contacts-tracker.herokuapp.com/api/contacts/")
         const data = await res.json()
         console.log(data);
         SetData(data);
@@ -28,7 +28,7 @@ function App() {
   //Fetchs A Single Contact 
   function viewcontact(val){
     async function getContact() {
-      const res = await fetch("http://localhost:4000/api/contacts/"+val)
+      const res = await fetch("https://contacts-tracker.herokuapp.com/api/contacts/"+val)
       const data = await res.json()
       if(res.ok){
         SetView(data)
@@ -44,7 +44,7 @@ function App() {
   //This function searchs the database for the string that was typed into the search bar (Searchs the firstname property) 
   function searchforcontacts(val){
     async function SearchContacts(){
-      const res = await fetch("http://localhost:4000/api/contacts/search/"+val)
+      const res = await fetch("https://contacts-tracker.herokuapp.com/api/contacts/search/"+val)
       const data = await res.json()
       if(res.ok){
       //Checks If Data Is Empty Response meaning that nothing matching the search criteria was found
