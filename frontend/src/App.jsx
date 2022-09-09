@@ -12,7 +12,6 @@ function App() {
   const[newcontact,SetContact]=useState(true);
   const[refreshdata,SetRefresh] = useState(false); //Stated used to refresh data 
   const[editcontact,SetEdit] = useState([]);//This array will hold the contacts existing values and pass them in as props to the Newcontact.jsx screen 
-
   //Initally fetchs all the data 
   React.useEffect(() => {
     async function getContacts() {
@@ -42,6 +41,20 @@ function App() {
   getContact()
   }
 
+  //This function searchs the database for the string that was typed into the search bar (Searchs the firstname property) 
+  function searchforcontacts(val){
+    async function SearchContacts(){
+      const res = await fetch("http://localhost:4000/api/contacts/search/"+val)
+      const data = await res.json()
+      if(res.ok){
+        SetData(data);
+    }
+  } 
+  val==""?SetRefresh(!refreshdata):SearchContacts()
+}
+
+
+
   //This function is triggered when the user hits on Contact when on the (Onecontact.jsx) screen it returns them back to the main contact list page 
   function back(){
     SetDisplay(true);
@@ -66,6 +79,7 @@ function App() {
 
     //Maps the apidata first fetched with application is opened and pass's it as a prop 
   const ContactsData=apidata.map(contact=>{
+    console.log('was fired')
     return(
 <ContactList
   key={contact._id}
@@ -83,6 +97,7 @@ function App() {
       <BrowserRouter>
        {displayed && newcontact&& <Navbar
        makenew={editcontactf}
+       searching={searchforcontacts}
        />}
       <Routes>
        
@@ -91,7 +106,7 @@ function App() {
         element={
           
           <div id="LIST">
-            {displayed && newcontact&&ContactsData}
+            {displayed && newcontact&& ContactsData}
             {displayed&& !newcontact && <NewContact
               goback={creation}
               cancelcreation={back}
