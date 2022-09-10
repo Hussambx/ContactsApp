@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import profilepic from "../assets/Circle-icons-profile.svg.png";
 //This component will act as the create new contact/edit an existing contact screen  
 export default function NewContact(props){
     
@@ -92,7 +92,7 @@ export default function NewContact(props){
                 <button onClick={props.cancelcreation}>Cancel</button> 
                 <button onClick={mainsubmit} style={{color:requiredfilled==true?"blue":"grey"}}>Done</button> 
             </div>
-         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"/>
+         <img src={profilepic}/>
             
             <input placeholder="First Name" required className="b" value={firstname} onChange={(e)=>SetFirstname(e.target.value)} maxLength="20"></input>
             <input placeholder="Last Name" required  value={lastname} onChange={(e)=>SetLastname(e.target.value)} maxlength="20"></input>

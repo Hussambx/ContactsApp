@@ -13,12 +13,12 @@ function App() {
   const[refreshdata,SetRefresh] = useState(false); //Stated used to refresh data 
   const[editcontact,SetEdit] = useState([]);//This array will hold the contacts existing values and pass them in as props to the Newcontact.jsx screen 
   const[loadingdata,SetWait]=useState(true); //This presents the loading text at first when the data is being fetched and waiting for a response 
+ 
   //Initally fetchs all the data 
   React.useEffect(() => {
     async function getContacts() {  //FOR SHOWCASEING PURPOSES THE URL WILL REMAIN EXPOSED RATHER THEN IT BEING HELD WITHIN AN ENV FILE 
         const res = await fetch("https://contacts-tracker.herokuapp.com/api/contacts/")
         const data = await res.json()
-        console.log(data);
         SetData(data);
        SetWait(false);
     }
@@ -61,12 +61,13 @@ function App() {
             }
         ]);
         }else{
-          //If the data is indeed no empty then it will take that data and set it up properly 
+          //If the data is indeed not empty then it will take that data and set it up properly 
           SetData(data);
         }
         
     }
   } 
+  //If the search bar is empty it will fetch all the data 
   val==""?SetRefresh(!refreshdata):SearchContacts()
 }
 
