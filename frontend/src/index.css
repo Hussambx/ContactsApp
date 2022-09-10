@@ -17,6 +17,12 @@ h1{
   
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
 .newcontact{
   text-align: right;
@@ -40,11 +46,14 @@ input{
 
 .newcontact{  
   text-align: center;
+  border-radius: 4px;
   font-size: 1.6em;
   color: white;
   background: transparent;
   border-style: none;
   height:50px;
+  width: 100%;
+  max-width: 900px;
 }
 
 
@@ -72,6 +81,13 @@ margin-top: 4px;
  padding-left: 8px;
  font-size: medium;
 }
+
+.contactbox:hover,input:hover,.newcontact:hover{
+  background: rgb(71, 63, 63);
+}
+
+
+
 
 #contactlistbg{
   background:rgb(27, 27, 27);

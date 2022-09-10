@@ -12,6 +12,7 @@ function App() {
   const[newcontact,SetContact]=useState(true);
   const[refreshdata,SetRefresh] = useState(false); //Stated used to refresh data 
   const[editcontact,SetEdit] = useState([]);//This array will hold the contacts existing values and pass them in as props to the Newcontact.jsx screen 
+  const[loadingdata,SetWait]=useState(true); //This presents the loading text at first when the data is being fetched and waiting for a response 
   //Initally fetchs all the data 
   React.useEffect(() => {
     async function getContacts() {  //FOR SHOWCASEING PURPOSES THE URL WILL REMAIN EXPOSED RATHER THEN IT BEING HELD WITHIN AN ENV FILE 
@@ -19,7 +20,7 @@ function App() {
         const data = await res.json()
         console.log(data);
         SetData(data);
-       
+       SetWait(false);
     }
     getContacts()
 }, [refreshdata])
@@ -116,6 +117,7 @@ function App() {
        makenew={editcontactf}
        searching={searchforcontacts}
        />}
+        {loadingdata && <h2>Loading...</h2>}
       <Routes>
        
         <Route

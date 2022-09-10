@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-
-
+import profilepic from "../assets/Circle-icons-profile.svg.png";
+import msgicon from"../assets/Xenatt-The-Circle-App-Messages.ico";
 export default function OneContact(props){
 
     const[deleteit,SetDelete]=useState(true); //This state tracks of the confirm delete menu should be rendered or not 
@@ -38,29 +38,29 @@ export default function OneContact(props){
                 <button onClick={existingvalues}>Edit</button> 
             </div>
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png"/>
+            <img src={profilepic}/>
 <h1>{props.firstname} {props.lastname}</h1>
 
             
         <div className="contactoptions">
             <div className="contactoption">
-                <img src="https://iconarchive.com/download/i76672/xenatt/the-circle/App-Messages.ico"/>
+                <img src={msgicon}/>
                 <h6>message</h6>
             </div>
             <div className="contactoption">
-                <img src="https://iconarchive.com/download/i76672/xenatt/the-circle/App-Messages.ico"/>
+                <img src={msgicon}/>
                 <h6>call</h6>
             </div>
             <div className="contactoption">
-                <img src="https://iconarchive.com/download/i76672/xenatt/the-circle/App-Messages.ico"/>
+                <img src={msgicon}/>
                 <h6>video</h6>
             </div>
             <div className="contactoption">
-                <img src="https://iconarchive.com/download/i76672/xenatt/the-circle/App-Messages.ico"/>
+                <img src={msgicon}/>
                 <h6>mail</h6>
             </div>
             <div className="contactoption">
-                <img src="https://iconarchive.com/download/i76672/xenatt/the-circle/App-Messages.ico"/>
+                <img src={msgicon}/>
                 <h6>pay</h6>
             </div>
         </div>
