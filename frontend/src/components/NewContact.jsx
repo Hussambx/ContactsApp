@@ -15,7 +15,7 @@ export default function NewContact(props){
 
         //The Main Function called on decides if it will then use the POST method (Create New Contact) or PATCH method (Update excisting contact) based on if idofdata is null 
         function mainsubmit(){
-            if(firstname&&lastname&&phonenumber!=""){
+            if(firstname&&lastname&&phonenumber&&email!=""){
                 idofdata==null?submit():updatedata();
             }else{
                 SetError("Please Fill All Required Elements")
@@ -23,7 +23,7 @@ export default function NewContact(props){
            
         }
         //Tracks if all required elements are filled or empty/null
-        if(firstname==null || lastname==null|| phonenumber ==null || firstname=='' || lastname==''|| phonenumber ==''){
+        if(firstname==null || lastname==null|| phonenumber ==null || firstname=='' || lastname==''|| phonenumber ==''||email==null||email==''){
             if(requiredfilled!=false){
                 SetRequirements(false)
             }
@@ -94,10 +94,10 @@ export default function NewContact(props){
             </div>
          <img src={profilepic}/>
             
-            <input placeholder="First Name" required className="b" value={firstname} onChange={(e)=>SetFirstname(e.target.value)} maxLength="20"></input>
-            <input placeholder="Last Name" required  value={lastname} onChange={(e)=>SetLastname(e.target.value)} maxlength="20"></input>
-            <input placeholder="  Phone Number" required  className="a" value={phonenumber} onChange={(e)=>SetNumber(e.target.value)} type="tel" maxlength="20" ></input>
-            <input placeholder="Email" required  value={email} onChange={(e)=>SetEmail(e.target.value)} maxlength="40"></input>
+            <input placeholder="*First Name" required className="b" value={firstname} onChange={(e)=>SetFirstname(e.target.value)} maxLength="20"></input>
+            <input placeholder="*Last Name" required  value={lastname} onChange={(e)=>SetLastname(e.target.value)} maxlength="20"></input>
+            <input placeholder="  *Phone Number" required  className="a" value={phonenumber} onChange={(e)=>SetNumber(e.target.value)} type="tel" maxlength="20" ></input>
+            <input placeholder="*Email" required  value={email} onChange={(e)=>SetEmail(e.target.value)} maxlength="40"></input>
             <input placeholder="Notes" required  className="a" value={notes} onChange={(e)=>SetNotes(e.target.value)} maxlength="80"></input>
             <h2>{errormsg} </h2>
         </>
